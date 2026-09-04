@@ -1,0 +1,168 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Happy Kids — design system
+ * Palette extracted from the brand logo: dusty pink, soft sky blue,
+ * warm cream backgrounds, soft dark-brown text.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-sand: var(--sand);
+  --shadow-soft: 0 2px 10px -4px oklch(0.55 0.05 30 / 12%);
+  --shadow-card: 0 10px 30px -18px oklch(0.5 0.06 30 / 30%);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.988 0.006 80);
+  --foreground: oklch(0.34 0.021 42);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.34 0.021 42);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.34 0.021 42);
+  --primary: oklch(0.745 0.088 19);
+  --primary-foreground: oklch(0.995 0.003 80);
+  --primary-soft: oklch(0.945 0.028 20);
+  --secondary: oklch(0.855 0.048 235);
+  --secondary-foreground: oklch(0.33 0.035 250);
+  --secondary-soft: oklch(0.955 0.022 235);
+  --muted: oklch(0.962 0.012 80);
+  --muted-foreground: oklch(0.56 0.02 50);
+  --accent: oklch(0.93 0.055 88);
+  --accent-foreground: oklch(0.36 0.04 60);
+  --destructive: oklch(0.6 0.19 25);
+  --destructive-foreground: oklch(0.99 0.003 80);
+  --border: oklch(0.915 0.014 70);
+  --input: oklch(0.915 0.014 70);
+  --ring: oklch(0.745 0.088 19);
+  --sand: oklch(0.968 0.016 74);
+  --sidebar: oklch(0.988 0.006 80);
+  --sidebar-foreground: oklch(0.34 0.021 42);
+  --sidebar-primary: oklch(0.745 0.088 19);
+  --sidebar-primary-foreground: oklch(0.995 0.003 80);
+  --sidebar-accent: oklch(0.962 0.012 80);
+  --sidebar-accent-foreground: oklch(0.34 0.021 42);
+  --sidebar-border: oklch(0.915 0.014 70);
+  --sidebar-ring: oklch(0.745 0.088 19);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility soft-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility marquee-track {
+  animation: marquee 22s linear infinite;
+
+  @media (min-width: 640px) {
+    animation: none;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility animate-scan {
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
