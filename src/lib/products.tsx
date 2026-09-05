@@ -50,7 +50,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
         name: item.name,
         category: item.category?.slug || "uncategorized",
         price: item.price,
-        images: item.image_url ? [item.image_url] : [],
+        images: item.image_url ? [item.image_url.replace('/src/assets/', '/assets/')] : [],
         description: item.description || "",
         sizes: item.sizes || [],
         colors: item.colors || [],

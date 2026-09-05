@@ -39,7 +39,7 @@ export function CategoriesProvider({ children }: { children: ReactNode }) {
         id: item.id,
         name: item.name,
         slug: item.slug,
-        imageUrl: item.image_url,
+        imageUrl: item.image_url ? item.image_url.replace('/src/assets/', '/assets/') : undefined,
       })) as Category[];
     },
   });
