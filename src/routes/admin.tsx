@@ -50,7 +50,7 @@ function AdminLayout() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "admin" && password === "admin123") {
+    if (username === "said" && password === "said1234") {
       sessionStorage.setItem('adminAuth', 'true');
       setIsAuthenticated(true);
       toast.success("تم تسجيل الدخول بنجاح");
